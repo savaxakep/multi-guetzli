@@ -12,5 +12,10 @@
   "bugs": {
     "url": "https://github.com/savaxakep/multi-guetzli/issues"
   },
-  "homepage": "https://github.com/savaxakep/multi-guetzli#readme"
+  "homepage": "https://github.com/savaxakep/multi-guetzli#readme",
+  "dependencies": {
+    "measure-time": "^3.1.0",
+    "read-dir-files": "^0.1.1",
+    "shelljs": "^0.7.7"
+  }
 }
