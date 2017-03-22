@@ -1,0 +1,16 @@
+{
+  "name": "multi-guetzli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savaxakep/multi-guetzli.git"
+  },
+  "author": "vladimir.savrov",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/savaxakep/multi-guetzli/issues"
+  },
+  "homepage": "https://github.com/savaxakep/multi-guetzli#readme"
+}
