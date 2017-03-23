@@ -14,9 +14,10 @@ readDirFiles.list('in', function (err, filenames) {
 
     for(var i = 1; i < filenames.length; i++) {
         var name = (isOsx()) ? filenames[i].replace('in/', '')
-            : filenames[i].replace('in\\', '').replace('\\', '/');
+            : filenames[i].replace('in\\', '').replace(new RegExp(/\\/g), '/');
 
-        // TODO: добавить проверку на форматы
+        var formats = ['png', 'jpg'],
+            currentFormat = filenames[i].substring(filenames[i].length - 3, filenames[i].length);
 
         if(isOsx() && name.indexOf('.DS_Store') > -1)
             continue;
@@ -28,16 +29,19 @@ readDirFiles.list('in', function (err, filenames) {
             continue;
         }
 
-        const getElapsed = measureTime();
-
         console.log('start', name);
 
-        if (shell.exec('guetzli -quality 100 "in/' + name + '" "out/' + name + '"').code !== 0) {
-            shell.echo('Error: not fount guetzli or etc error. Install link: https://github.com/google/guetzli/');
-            shell.exit(1);
-        }
+        if(formats.find(function (format) {return format === currentFormat;})) {
+            const getElapsed = measureTime();
 
-        const elapsed = getElapsed();
-        console.log('end:', elapsed.seconds, 'seconds');
+            if (shell.exec('guetzli -quality 90 "in/' + name + '" "out/' + name + '"').code !== 0) {
+                shell.echo('Error: not fount guetzli or etc error. Install link: https://github.com/google/guetzli/');
+                shell.exit(1);
+            }
+
+            const elapsed = getElapsed();
+            console.log('end:', elapsed.seconds, 'seconds');
+        } else
+            shell.echo('Error: availables formats (png, jpg)');
     }
 });
