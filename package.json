@@ -16,6 +16,7 @@
   "dependencies": {
     "is-osx": "^1.0.2",
     "measure-time": "^3.1.0",
+    "nexe": "^2.0.0-rc.22",
     "read-dir-files": "^0.1.1",
     "shelljs": "^0.7.7"
   }
